@@ -1,0 +1,83 @@
+{
+  "name": "msstc4symfony/metrics-bridge-healthcheck",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maxim Shamaev",
+      "email": "maxim.shamaev@gmail.com"
+    }
+  ],
+  "type": "symfony-bundle",
+  "description": "Exports msstc4symfony/healthcheck-bundle probe and checker results as msstc4symfony/metrics-bundle Prometheus metrics",
+  "minimum-stability": "stable",
+  "keywords": [
+    "php",
+    "symfony",
+    "metrics",
+    "prometheus",
+    "healthcheck"
+  ],
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/msstc4symfony/healthcheck-bundle"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/msstc4symfony/metrics-bundle"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Msstc4Symfony\\MetricsBridgeHealthcheck\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Msstc4Symfony\\MetricsBridgeHealthcheck\\Test\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.2",
+    "composer-runtime-api": ">=2.2",
+    "monolog/monolog": "^3.5",
+    "msstc4symfony/healthcheck-bundle": "^2.2",
+    "msstc4symfony/metrics-bundle": "^2.0",
+    "psr/log": "^2.0|^3.0",
+    "symfony/config": "^7.4|^8.0",
+    "symfony/dependency-injection": "^7.4|^8.0",
+    "symfony/event-dispatcher": "^7.4|^8.0",
+    "symfony/http-kernel": "^7.4|^8.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.76",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/phpstan-strict-rules": "^2.0",
+    "phpstan/phpstan-symfony": "^2.0",
+    "phpunit/phpunit": ">=11.0",
+    "promphp/prometheus_client_php": "^2.13",
+    "rector/rector": "^2.1",
+    "roave/security-advisories": "dev-latest",
+    "symfony/filesystem": "^7.4|^8.0",
+    "symfony/framework-bundle": "^7.4|^8.0",
+    "symfony/monolog-bundle": "^3.11|^4.0",
+    "symfony/validator": "^7.4|^8.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    },
+    "sort-packages": true
+  },
+  "conflict": {
+    "symfony/symfony": "*"
+  },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "^7.4|^8.0"
+    }
+  }
+}

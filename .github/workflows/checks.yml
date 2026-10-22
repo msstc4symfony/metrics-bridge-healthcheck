@@ -1,0 +1,34 @@
+name: Code Quality Checks
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - LICENSE
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/*.md'
+      - LICENSE
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  standard:
+    uses: msstc4symfony/bundle-standard/.github/workflows/php-bundle.yml@v3.2.0
+    with:
+      slug: msstc4symfony/metrics-bridge-healthcheck
+      # ext-redis: required by metrics-bundle.
+      extensions: 'mbstring, xml, ctype, iconv, intl, json, redis'
+      # Measured covered MSI 96 % on 2026-10-22 UTC (2 equivalent mutants), minus a margin for noise.
+      infection-min-msi: 90
+      infection-min-covered-msi: 90
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
