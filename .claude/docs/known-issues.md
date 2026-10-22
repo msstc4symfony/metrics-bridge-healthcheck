@@ -36,3 +36,6 @@
   внутренний catch). Covered MSI 96 % (2026-10-22 UTC), пороги CI 90.
 - **`composer-local.json`** (в `.gitignore`) — `composer-ci.json` + path-репозиторий `../healthcheck-bundle` с версией
   2.2.0: для работы против невыпущенного healthcheck (`COMPOSER=composer-local.json composer update`).
+- **`composer-ci.lock` в git**, как у остальных пакетов семейства: job `setup` CI ставит зависимости по нему. Локально
+  `roave/security-advisories` конфликтует с PHP 8.4.17 — lock обновлять с `--ignore-platform-req=php`, работать через
+  `composer-local.json`.
