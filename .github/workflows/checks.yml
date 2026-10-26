@@ -22,13 +22,10 @@ permissions:
 
 jobs:
   standard:
-    uses: msstc4symfony/bundle-standard/.github/workflows/php-bundle.yml@v3.2.0
+    uses: msstc4symfony/bundle-standard/.github/workflows/php-bundle.yml@v4.0.0
     with:
-      slug: msstc4symfony/metrics-bridge-healthcheck
       # ext-redis: required by metrics-bundle.
       extensions: 'mbstring, xml, ctype, iconv, intl, json, redis'
       # Measured covered MSI 96 % on 2026-10-22 UTC (2 equivalent mutants), minus a margin for noise.
       infection-min-msi: 90
       infection-min-covered-msi: 90
-    secrets:
-      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
